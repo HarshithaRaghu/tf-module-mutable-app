@@ -16,10 +16,10 @@ resource "null_resource" "app" {
       }
 
       inline = [
-          "ansible-pull -U https://github.com/HarshithaRaghu/ansible.git -e COMPONENT=${var.COMPONENT} -e DB_PASSWORD=RoboShop@1 -e ENV=${var.ENV} -e APP_VERSION=${var.APP_VERSION} -e ENV=dev robot-pull.yml"
+          "ansible-pull -U https://github.com/HarshithaRaghu/ansible.git -e MONGO_URL=${data.terraform_remote_state.db.outputs.MONGO_ENDPOINT} -e COMPONENT=${var.COMPONENT} -e DB_PASSWORD=RoboShop@1 -e ENV=${var.ENV} -e APP_VERSION=${var.APP_VERSION} -e ENV=dev robot-pull.yml"
         ]
     }
 
 }
 
-# By default, provisioners are create-time only; Means they only run during the infrastrucure creation only.
+# By default, provisioners are create-time only; Means they only run during the infrastrucure creation only.!
